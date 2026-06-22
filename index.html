@@ -3,27 +3,464 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PitIQ — Legal</title>
+  <title>PitIQ — F1 Fantasy Coach</title>
+  <meta name="description" content="Rate your F1 Fantasy team, get an instant score and the one swap that matters. Free AI coach for casual fans." />
+  <meta property="og:title" content="PitIQ — F1 Fantasy Coach" />
+  <meta property="og:description" content="Rate your F1 Fantasy team instantly. AI coaching, lineup optimizer, chip strategy — all free." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pitiq.app" />
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem; color: #1a1a1a; line-height: 1.7; }
-    h1 { font-size: 1.8rem; margin-bottom: 0.25rem; }
-    p { color: #555; }
-    ul { list-style: none; padding: 0; margin-top: 2rem; }
-    li { margin-bottom: 1rem; }
-    a { color: #0066cc; font-size: 1.1rem; font-weight: 600; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; color: #666; font-size: 0.85rem; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0B0E13;
+      --bg2: #131720;
+      --card: #161c28;
+      --accent: #E83D2C;
+      --accent-soft: rgba(232,61,44,0.12);
+      --text: #F2F4F8;
+      --text2: #8892A4;
+      --text3: #5B6478;
+      --border: rgba(255,255,255,0.07);
+      --green: #2DD4A7;
+      --yellow: #F5B83D;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(11,14,19,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 10;
+    }
+    .logo { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
+    .logo span { color: var(--accent); }
+    .nav-link {
+      color: var(--text2);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.15s;
+    }
+    .nav-link:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent-soft);
+      border: 1px solid rgba(232,61,44,0.3);
+      border-radius: 999px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    h1 em { font-style: normal; color: var(--accent); }
+    .subtitle {
+      color: var(--text2);
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--text2);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.85rem 1.4rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .btn-secondary:hover { border-color: var(--text3); color: var(--text); }
+
+    /* ── SCORE DEMO ── */
+    .demo-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.5rem 2rem;
+      max-width: 360px;
+      margin: 3rem auto 0;
+      text-align: left;
+    }
+    .score-ring {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .ring {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: conic-gradient(#E83D2C 0% 82%, rgba(255,255,255,0.07) 82%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .ring-inner {
+      width: 54px;
+      height: 54px;
+      background: var(--card);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .score-label { font-size: 0.75rem; color: var(--text3); font-weight: 600; letter-spacing: 0.05em; }
+    .score-verdict { font-size: 1rem; font-weight: 700; color: var(--text); margin-top: 2px; }
+    .score-detail { font-size: 0.85rem; color: var(--text2); }
+    .note {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      background: rgba(232,61,44,0.08);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 0.7rem 0.9rem;
+      margin-top: 0.8rem;
+      font-size: 0.83rem;
+      color: var(--text2);
+      line-height: 1.5;
+    }
+    .note strong { color: var(--text); }
+
+    /* ── FEATURES ── */
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--text3);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.4rem 1.5rem;
+    }
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(232,61,44,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.9rem;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .feature-icon svg { width: 20px; height: 20px; }
+    .feature-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .feature-desc { font-size: 0.875rem; color: var(--text2); line-height: 1.55; }
+
+    /* ── FREE SECTION ── */
+    .free-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .free-section section {
+      text-align: center;
+    }
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+    .pill {
+      background: var(--accent-soft);
+      border: 1px solid rgba(232,61,44,0.25);
+      color: var(--text2);
+      border-radius: 999px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.85rem;
+    }
+    .pill.green { background: rgba(45,212,167,0.1); border-color: rgba(45,212,167,0.25); color: var(--green); }
+
+    /* ── CTA BOTTOM ── */
+    .cta-bottom {
+      text-align: center;
+      padding: 4rem 2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .cta-bottom h2 {
+      font-size: clamp(1.6rem, 4vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+    .cta-bottom p { color: var(--text2); margin-bottom: 2rem; font-size: 0.95rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    footer p { font-size: 0.8rem; color: var(--text3); }
+    .footer-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+    .footer-links a { color: var(--text3); text-decoration: none; font-size: 0.8rem; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--text2); }
+
+    /* ── TEAM IMPORT BANNER (hidden by default, shown via JS) ── */
+    #import-banner {
+      display: none;
+      background: var(--card);
+      border: 1px solid rgba(45,212,167,0.3);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin: 2rem auto;
+      max-width: 420px;
+      text-align: center;
+    }
+    #import-banner h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    #import-banner p { color: var(--text2); font-size: 0.85rem; margin-bottom: 1.2rem; }
   </style>
 </head>
 <body>
-  <h1>PitIQ</h1>
-  <p>F1 Fantasy Companion App — Legal Documents</p>
-  <ul>
-    <li><a href="privacy.html">Privacy Policy</a></li>
-    <li><a href="terms.html">Terms of Use</a></li>
-  </ul>
-  <footer>
-    <p>Contact: <a href="mailto:tozankayra4@gmail.com">tozankayra4@gmail.com</a></p>
-  </footer>
+
+<nav>
+  <span class="logo">Pit<span>IQ</span></span>
+  <a class="nav-link" href="https://apps.apple.com/app/id6782202084">Download ↗</a>
+</nav>
+
+<!-- Team import banner — shown when a ?d= share link is opened -->
+<div id="import-banner">
+  <h3>Someone shared a team with you!</h3>
+  <p>Open PitIQ to load their picks and see how they score.</p>
+  <a id="open-app-btn" class="btn-primary" href="#">Open in PitIQ</a>
+  <br/><br/>
+  <a class="btn-secondary" href="https://apps.apple.com/app/id6782202084" style="display:inline-flex">
+    Get PitIQ free →
+  </a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">🏎 F1 Fantasy · Free Coach</div>
+  <h1>Know exactly<br/>what to do<br/>with your <em>F1 team</em></h1>
+  <p class="subtitle">
+    Enter your lineup, get an instant 0-100 score and the single best swap to make.
+    No sign-up. No wall of numbers. Just clear coaching.
+  </p>
+  <div class="cta-group">
+    <a class="btn-primary" href="https://apps.apple.com/app/id6782202084">
+      ↓ Download — it's free
+    </a>
+    <a class="btn-secondary" href="#features">See what it does</a>
+  </div>
+
+  <div class="demo-card">
+    <div class="score-ring">
+      <div class="ring"><div class="ring-inner">82</div></div>
+      <div>
+        <div class="score-label">TEAM SCORE</div>
+        <div class="score-verdict">Strong lineup</div>
+        <div class="score-detail">317 projected pts · $3.2M left</div>
+      </div>
+    </div>
+    <div class="note">
+      <span>🔁</span>
+      <span><strong>Best swap:</strong> Replace Albon ($8M) with Hadjar ($7.5M) — saves $0.5M and gains ~6 projected pts.</span>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-label">WHAT PITIQ DOES</div>
+  <div class="section-title">Three tools, one goal</div>
+  <div class="features">
+    <div class="feature-card">
+      <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M6.886.773C7.29-.231 8.71-.231 9.114.773l1.472 3.667 3.943.268c1.08.073 1.518 1.424.688 2.118L12.185 9.36l.964 3.832c.264 1.05-.886 1.884-1.802 1.31L8 12.4l-3.347 2.101c-.916.575-2.066-.26-1.802-1.309l.964-3.832L.783 6.826c-.83-.694-.391-2.045.688-2.118l3.943-.268z"/></svg></div>
+      <div class="feature-title">Rate My Team</div>
+      <div class="feature-desc">Enter your current lineup and get a 0–100 score, key strengths and weaknesses, and the single best swap — explained in plain English.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M13 10a.75.75 0 0 1 .725.556 2.37 2.37 0 0 0 1.72 1.72.75.75 0 0 1 0 1.449 2.37 2.37 0 0 0-1.72 1.72.75.75 0 0 1-1.45 0 2.37 2.37 0 0 0-1.72-1.72.75.75 0 0 1 0-1.45 2.37 2.37 0 0 0 1.72-1.72l.043-.117A.75.75 0 0 1 13 10M7 0a1.5 1.5 0 0 1 1.48 1.253c.242 1.455.696 2.364 1.3 2.968.603.603 1.512 1.057 2.967 1.3a1.5 1.5 0 0 1 0 2.958c-1.455.243-2.364.697-2.968 1.3-.603.604-1.057 1.513-1.3 2.968a1.5 1.5 0 0 1-2.958 0c-.243-1.455-.697-2.364-1.3-2.968-.604-.603-1.513-1.057-2.968-1.3a1.5 1.5 0 0 1 0-2.958c1.455-.243 2.364-.697 2.968-1.3.603-.604 1.057-1.513 1.3-2.968l.028-.133A1.5 1.5 0 0 1 7 0m0 1.5C6.45 4.8 4.8 6.45 1.5 7c3.3.55 4.95 2.2 5.5 5.5.55-3.3 2.2-4.95 5.5-5.5C9.2 6.45 7.55 4.8 7 1.5"/></svg></div>
+      <div class="feature-title">AI Coach</div>
+      <div class="feature-desc">Claude AI reads your team and gives coaching advice: when to use your chips, who to target next window, and whether your captain pick makes sense.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M7.5 5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m1.405.75a3.001 3.001 0 0 1-5.81 0H1.747a.75.75 0 0 1 0-1.5h1.348a3.001 3.001 0 0 1 5.81 0h5.345a.75.75 0 0 1 0 1.5zm-7.158 4.5h5.345a3.001 3.001 0 0 1 5.811 0h1.347a.75.75 0 1 1 0 1.5h-1.347a3.001 3.001 0 0 1-5.81 0H1.746a.75.75 0 0 1 0-1.5m8.25-.75a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3" clip-rule="evenodd"/></svg></div>
+      <div class="feature-title">Lineup Builder</div>
+      <div class="feature-desc">Find the mathematically optimal team for your budget in under a second. Lock in drivers you want to keep and let PitIQ fill the rest.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><g clip-path="url(#a)"><path fill="currentColor" fill-rule="evenodd" d="M6 4v1a.5.5 0 0 1-.5.5h-3A.5.5 0 0 1 2 5V4a.5.5 0 0 1 .5-.5h3A.5.5 0 0 1 6 4M2 7.5v1a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0-.5.5M2 11v1a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5m-1.5.503V4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1q0 .26-.063.5H9.5a2 2 0 0 1 2 2v1q0 .26-.063.5H13.5a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2z" clip-rule="evenodd"/></g><defs><clipPath id="a"><path fill="currentColor" d="M0 0h16v16H0z"/></clipPath></defs></svg></div>
+      <div class="feature-title">Race History</div>
+      <div class="feature-desc">See how your team scored in each race this season. Track your points round by round and identify which drivers are pulling their weight.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M13.293 0c.39 0 .707.317.707.707V2h1.293a.707.707 0 0 1 .5 1.207l-1.46 1.46A1.14 1.14 0 0 1 13.53 5h-1.47L8.53 8.53a.75.75 0 0 1-1.06-1.06L11 3.94V2.47c0-.301.12-.59.333-.804l1.46-1.46a.7.7 0 0 1 .5-.207M2.5 8a5.5 5.5 0 0 1 6.598-5.39.75.75 0 0 0 .298-1.47A7 7 0 1 0 14.86 6.6a.75.75 0 0 0-1.47.299q.109.533.11 1.101a5.5 5.5 0 1 1-11 0m5.364-2.496a.75.75 0 0 0-.08-1.498A4 4 0 1 0 11.988 8.3a.75.75 0 0 0-1.496-.111 2.5 2.5 0 1 1-2.63-2.686" clip-rule="evenodd"/></svg></div>
+      <div class="feature-title">Differential Picks</div>
+      <div class="feature-desc">Find high-value, low-ownership drivers your rivals overlook. Value above the median at mid-tier prices — the edge that separates good teams from great ones.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M12 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-5A1.5 1.5 0 0 1 4 12.5v-9A1.5 1.5 0 0 1 5.5 2h5A1.5 1.5 0 0 1 12 3.5m-1.5-3a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-5a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3zM6.25 11a.75.75 0 0 0 0 1.5h3.5a.75.75 0 0 0 0-1.5z" clip-rule="evenodd"/></svg></div>
+      <div class="feature-title">Home Screen Widget</div>
+      <div class="feature-desc">Three iOS widgets: countdown to the next race, your team at a glance, and a full dashboard. No need to open the app every morning.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FREE SECTION -->
+<div class="free-section">
+  <section>
+    <div class="section-label">PRICING</div>
+    <div class="section-title">The useful parts are free.<br/>All of them.</div>
+    <p style="color:var(--text2);max-width:480px;margin:0 auto;font-size:0.95rem;">
+      Rate My Team, AI Coach (3 per day), shareable score card, race history — no paywall.
+      Pro unlocks unlimited AI and differential picks.
+    </p>
+    <div class="pill-list">
+      <span class="pill green">✓ Unlimited team rating</span>
+      <span class="pill green">✓ Race history</span>
+      <span class="pill green">✓ Shareable score card</span>
+      <span class="pill green">✓ Home screen widgets</span>
+      <span class="pill green">✓ AI coach · 3/day free</span>
+      <span class="pill">💎 Unlimited AI · Pro</span>
+      <span class="pill">💎 Differential picks · Pro</span>
+    </div>
+  </section>
+</div>
+
+<!-- CTA BOTTOM -->
+<div class="cta-bottom">
+  <h2>Free. No sign-up.<br/>Ready in 30 seconds.</h2>
+  <p>Download PitIQ, enter your team, and get your first score in under a minute.</p>
+  <a class="btn-primary" href="https://apps.apple.com/app/id6782202084" style="display:inline-flex;margin:0 auto;">
+    Download on the App Store
+  </a>
+</div>
+
+<footer>
+  <p>© 2026 PitIQ · Unofficial fan app, not affiliated with Formula 1® or FOM</p>
+  <div class="footer-links">
+    <a href="disclaimer.html">Disclaimer</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="mailto:tozankayra4@gmail.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Handle team share links: pitiq.app/?d=max_verstappen,...&cap=...&cons=...
+  // or pitiq.app/team?d=...
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var d = params.get('d');
+    var cap = params.get('cap');
+    var cons = params.get('cons');
+    if (d) {
+      var banner = document.getElementById('import-banner');
+      var btn = document.getElementById('open-app-btn');
+      banner.style.display = 'block';
+      // Build pitiq:// deep link and attempt to open the app
+      var deepLink = 'pitiq://import-team?' + params.toString();
+      btn.href = deepLink;
+      // Auto-attempt after a short delay (allows the page to render first)
+      setTimeout(function () {
+        window.location.href = deepLink;
+      }, 600);
+    }
+  })();
+</script>
 </body>
 </html>
