@@ -5,7 +5,8 @@
         "appIDs": ["A4Q6746HY7.com.pitiq.app"],
         "components": [
           { "/": "/compare*" },
-          { "/": "/import-team*" }
+          { "/": "/import-team*" },
+          { "/": "/league*" }
         ]
       }
     ]
