@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.pitiq.app",
+      "sha256_cert_fingerprints": [
+        "FA:99:54:BB:B9:60:D3:D2:86:72:74:53:C2:00:2A:C3:7F:19:4E:8C:A6:19:B5:40:D7:F8:87:96:CD:22:66:22",
+        "3B:02:02:0D:3C:A5:86:16:D3:54:18:35:C2:3A:07:E0:3D:51:D9:55:7F:39:FA:45:02:5E:16:52:8B:6C:09:6D"
+      ]
+    }
+  }
+]
