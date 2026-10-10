@@ -4,71 +4,76 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy — PitIQ</title>
+  <meta name="description" content="How PitIQ handles your data: what stays on your device, what is optional, which services we use, and how to delete everything." />
+  <link rel="canonical" href="https://pitiqapp.com/privacy.html" />
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem; color: #1a1a1a; line-height: 1.7; }
-    h1 { font-size: 1.8rem; margin-bottom: 0.25rem; }
-    .updated { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem; background: #0F0C0D; color: #F7F2EF; line-height: 1.7; }
+    h1 { font-size: 1.9rem; margin-bottom: 0.25rem; letter-spacing: -0.02em; }
+    .updated { color: #8D8280; font-size: 0.9rem; margin-bottom: 2rem; }
     h2 { font-size: 1.1rem; margin-top: 2rem; margin-bottom: 0.4rem; }
-    p { margin: 0 0 1rem; }
-    a { color: #0066cc; }
-    table { border-collapse: collapse; width: 100%; margin-bottom: 1rem; font-size: 0.9rem; }
-    th, td { border: 1px solid #ddd; padding: 0.4rem 0.7rem; text-align: left; }
-    th { background: #f5f5f5; }
-    footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; color: #666; font-size: 0.85rem; }
+    p, li { margin: 0 0 1rem; color: #D9D0CC; }
+    a { color: #FF7A62; }
+    .home { display: inline-block; margin-bottom: 1.5rem; font-weight: 800; font-size: 1.3rem; text-decoration: none; color: #F7F2EF; letter-spacing: -0.03em; }
+    .home span { color: #FF4D2E; }
+    footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #322A2E; color: #8D8280; font-size: 0.85rem; }
   </style>
 </head>
 <body>
+  <a class="home" href="/">Pit<span>IQ</span></a>
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: June 21, 2026</p>
-
+  <p class="updated">Last updated: October 9, 2026</p>
   <h2>Summary</h2>
-  <p>PitIQ is designed to work without an account and stores your fantasy team locally on your device by default. We do not show ads, we do not sell or share personal information, and we do not use third-party advertising trackers.</p>
-
+  <p>PitIQ is designed to work without an account and stores your fantasy team on your device by default. We do not show ads inside the app and we do not sell your personal information. We do use Meta's advertising software and RevenueCat's connection to Meta to measure our own ads, only as described under "Advertising measurement (Meta)" below, and only with your permission.</p>
   <h2>Data controller</h2>
   <p>The data controller for PitIQ is Kayra Tozan (<a href="mailto:tozankayra4@gmail.com">tozankayra4@gmail.com</a>). By using PitIQ you acknowledge that your data is processed as described below.</p>
-
   <h2>Age requirement (COPPA / GDPR)</h2>
   <p>PitIQ is not directed at children under 13 years of age (or the applicable minimum age in your country — 16 in most EU member states). We do not knowingly collect personal information from children below this age. If you believe a child has provided personal data, please contact us and we will delete it promptly.</p>
-
   <h2>Data stored on your device</h2>
-  <p>Your selected team (driver and constructor identifiers, captain choice), price history snapshots, and a cache of public race statistics are stored in the app's local storage. Deleting the app removes this data.</p>
-
+  <p>Your selected team (driver and constructor identifiers, DRS Boost choice), price history snapshots, and a cache of public race statistics are stored in the app's local storage. Deleting the app removes this data.</p>
   <h2>Optional cloud features</h2>
-  <p>When cloud sync is enabled and you sign in, your team selection is stored in our database (hosted by Supabase, EU region) linked to your account identifier, protected by row-level security so only you can read it. Anonymous sessions (no email required) are created automatically to support cloud features. You can delete all stored data at any time via Settings → "Delete my data and reset". The legal basis for this processing is the performance of a contract — these features operate only at your explicit request.</p>
-
+  <p>Anonymous sessions (no email required) are created automatically to support cloud features. When cloud sync is enabled, your team selection is stored in our database (hosted by Supabase) linked to your account identifier, protected by row-level security so only you can read it. You can delete all stored data at any time via Settings → "Delete my data and reset". The legal basis for this processing is the performance of a contract: these features operate only at your explicit request.</p>
+  <p>If you choose to link an email address (optional, to keep your account on another device), it is stored with our authentication provider (Supabase Authentication) and deleted with your account.</p>
+  <h2>Leagues, leaderboard and predictions</h2>
+  <p>If you join a mini-league, use the global leaderboard or make race predictions, we store your display name (up to 20 characters, chosen by you), league membership, scores and predictions. Your display name and score are visible to the other members of your league and, if you submit to it, on the global leaderboard. Choose a name that does not identify you if you prefer. This data is deleted when you delete your account.</p>
+  <h2>Race alerts (push notifications)</h2>
+  <p>If you turn on race alerts, PitIQ stores your Expo push notification token and your platform (iOS or Android) so we can send lineup-lock and result notifications through Expo's push service. It is removed when you turn alerts off or delete your account.</p>
+  <h2>Feedback you send</h2>
+  <p>If you send feedback from the app, we store the text you write (up to 2,000 characters), the type you chose, your app version and platform, and your anonymous account identifier. Please do not include personal information in it. Feedback is deleted automatically after 90 days. If you delete your account earlier, the feedback is no longer linked to your account but is kept until that 90-day limit.</p>
+  <h2>Team history and suggestion records (optional)</h2>
+  <p>If you choose to turn on "Help improve suggestions" in Settings → Data &amp; privacy, we keep a history of how your team looked at the start of each race weekend: your drivers, constructors and DRS Boost choice and, if you entered them, your bank, free-transfer count and the chips you marked as used, together with when each was recorded. If PitIQ shows you a suggestion, we also record the suggestion, whether you applied it (only when you press the button for it) and how it compared with the official result. We use this only to measure and improve how well our suggestions work. We do not use it for advertising and we do not sell it.</p>
+  <p>This is off by default and based on your consent. PitIQ works the same if you do not turn it on. You can turn it off at any time: new records stop immediately and the records collected because of your consent are deleted right away. Deleting your data or your account does the same. While it stays on, each record is deleted 12 months after it was made.</p>
+  <p>We keep a small record of your choice (your anonymous account identifier, whether you agreed or withdrew, the version of this text you agreed to, and the time) so that we can show that consent was given or withdrawn. It contains no team or suggestion data. We keep it for up to 24 months after you withdraw or delete your account; this is our own retention period.</p>
+  <p>The records themselves do not contain your name, email or device identifier, but we do not call them anonymous: a very distinctive team recorded at an exact time could in principle be recognised by someone who already knows both. That is why they are deleted when you withdraw. We may keep statistics that combine many users (for example how accurate a suggestion model was in a given race) because they describe no individual. Public data from the official fantasy game's website (prices, scores, schedules) is not personal data and is collected regardless of this setting.</p>
   <h2>AI coach</h2>
   <p>When you tap "Explain like a coach", your team selection and our computed analysis (driver names, scores — no personal information) are sent to our server, which forwards them to Anthropic (anthropic.com) to generate the explanation text. Anthropic processes data in the United States. The request contains no identifiers beyond your anonymous account session and is rate-limited. Usage events are logged to enforce rate limits and are deleted after 7 days. The legal basis for this processing is our legitimate interest in providing the AI coaching feature you requested and preventing service abuse.</p>
-
+  <h2>Advertising measurement (Meta)</h2>
+  <p>PitIQ includes Meta's (Facebook's) software development kit, and RevenueCat can send Meta your subscription events, so that we can measure which of our own ads on Meta bring new users and subscribers and improve those ads. We do not show third-party ads in PitIQ. This is separate from analytics and from "Help improve suggestions": turning one of those on or off does not change this, and this does not change them.</p>
+  <p>iPhone: PitIQ asks once, when you finish onboarding, through Apple's App Tracking Transparency prompt. If you tap Allow, Meta's software may collect your device's advertising identifier (IDFA) and a Meta-generated anonymous identifier, and report that PitIQ was opened (including the first open after install) together with basic device and app information. RevenueCat may also send Meta your subscription events (for example that a subscription started or renewed, with its amount and currency) together with those identifiers and your IP address, so Meta can match them to an ad. If you tap Ask App Not to Track, or tracking is restricted on your device, PitIQ does not use your advertising identifier, does not share your subscription events with Meta, and does not send data to Meta for tracking. iOS also blocks connections to the tracking domains PitIQ has declared when tracking is not allowed. PitIQ works the same, including Pro, whichever you choose.</p>
+  <p>Android: PitIQ does not currently use Meta advertising measurement on Android. Meta's software is not started and nothing is shared with Meta. If that changes we will ask you first and update this policy.</p>
+  <p>You can change your choice at any time: on iPhone in Settings → Privacy &amp; Security → Tracking → PitIQ. The legal basis is your consent. Meta processes this data under its own privacy policy (facebook.com/privacy/policy).</p>
   <h2>Analytics (PostHog)</h2>
-  <p>PitIQ uses PostHog (posthog.com) to collect anonymised usage events (e.g., which tabs are visited, paywall views, onboarding completion). These events contain no personal information. PostHog processes data in the United States. The legal basis for this processing is your consent, given during onboarding. You can withdraw consent at any time via Settings → "Data &amp; privacy" → Analytics toggle. Withdrawing consent stops all further event collection and deletes your PostHog identity.</p>
-
-  <h2>Crash reporting (Sentry)</h2>
-  <p>PitIQ uses Sentry (sentry.io) to automatically collect crash reports and error diagnostics. This data may include device model, OS version, app version, and anonymised stack traces. It does not include your name, email, or team selection. Crash reports are used solely to identify and fix software defects. Sentry processes data in the United States. The legal basis for this processing is our legitimate interest in maintaining the stability and security of PitIQ. For more information, see <a href="https://sentry.io/privacy/">sentry.io/privacy</a>.</p>
-
+  <p>PitIQ uses PostHog (posthog.com) to collect usage events (e.g., which tabs are visited, paywall views, onboarding completion) only if you allow it. The events are tied to a random identifier on your device, not to your account, name or email. PostHog processes data in the United States. The legal basis for this processing is your consent, which you can give or refuse during onboarding. You can withdraw it at any time via Settings → "Data &amp; privacy" → Analytics toggle. If you withdraw analytics consent, PitIQ stops sending analytics events to PostHog. Events already collected stay with PostHog, are associated with that random identifier and not with your account, name or email, and are kept under PostHog's retention settings.</p>
+  <h2>Crash reporting and performance (Sentry)</h2>
+  <p>PitIQ uses Sentry (sentry.io) to automatically collect crash reports, error diagnostics and a sample of performance traces (how long screens and requests take). This data may include device model, OS version, app version, and stack traces, together with a random identifier that Sentry's software generates on your device. We do not give Sentry your name, email or team selection, but the web addresses recorded just before a problem can contain your anonymous account identifier, so we treat this data as linked to you. It is used solely to identify and fix software defects and slowdowns. Sentry processes data in the United States. The legal basis for this processing is our legitimate interest in maintaining the stability and security of PitIQ. For more information, see sentry.io/privacy.</p>
   <h2>Subscriptions (RevenueCat)</h2>
-  <p>PitIQ uses RevenueCat (revenuecat.com) to manage in-app purchases and Pro subscription status. RevenueCat receives purchase transaction identifiers and subscription entitlement data from the App Store or Google Play. RevenueCat does not receive your name or email address. RevenueCat processes data in the United States. The legal basis for this processing is the performance of a contract — RevenueCat's records are necessary to verify and deliver your Pro subscription. For more information, see <a href="https://www.revenuecat.com/privacy/">revenuecat.com/privacy</a>.</p>
-
+  <p>PitIQ uses RevenueCat (revenuecat.com) to manage in-app purchases and Pro subscription status. RevenueCat receives purchase transaction identifiers and subscription entitlement data from the App Store or Google Play, together with your anonymous account identifier. RevenueCat does not receive your name or email address from PitIQ. If you allow advertising measurement as described above, PitIQ also gives RevenueCat your advertising identifier, your device's vendor identifier, your IP address, Meta's anonymous identifier and your tracking choice so that it can send your subscription events to Meta. If you later refuse tracking, PitIQ stops sharing and removes Meta's anonymous identifier from RevenueCat, but RevenueCat keeps the device identifiers it already received for as long as it keeps your purchase record (it does not allow them to be changed), and does not send them to Meta. RevenueCat processes data in the United States. The legal basis for this processing is the performance of a contract: RevenueCat's records are necessary to verify and deliver your Pro subscription. For more information, see revenuecat.com/privacy.</p>
   <h2>Network requests</h2>
-  <p>The app fetches public race results from the Jolpica-F1 API (<a href="https://jolpi.ca">jolpi.ca</a>) over HTTPS. That request contains no personal data. Jolpica data is used under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
-
+  <p>The app fetches public race results from the Jolpica-F1 API (jolpi.ca) over HTTPS. That request contains no personal data. During a live race or sprint the app also requests timing data directly from the OpenF1 API (openf1.org); like any request to a server, this shows your device's IP address to OpenF1, and no account or team information. Our server collects public data files published by the official fantasy game's website (prices, ownership percentages, scoring data and the race schedule) and publishes a processed, non-personal file that the app downloads. PitIQ works out its suggestion on your device from that file and from your team, so your team, bank balance and free transfers are not sent to us to make a suggestion. Jolpica's maintainers publish their data under CC BY-NC-SA 4.0 (creativecommons.org/licenses/by-nc-sa/4.0); PitIQ uses it with their permission.</p>
   <h2>Data retention</h2>
-  <table>
-    <tr><th>Data</th><th>Retained until</th></tr>
-    <tr><td>Device-local team data</td><td>Until you delete the app</td></tr>
-    <tr><td>Cloud team data (saved_teams)</td><td>Until you use "Delete my data and reset" or delete your account</td></tr>
-    <tr><td>Anonymous session</td><td>Until you delete your data, or after 24 months of inactivity</td></tr>
-    <tr><td>AI rate-limit logs</td><td>7 days</td></tr>
-    <tr><td>Crash reports (Sentry)</td><td>90 days</td></tr>
-    <tr><td>Analytics events (PostHog)</td><td>Until you withdraw consent or delete your account</td></tr>
-    <tr><td>Purchase records (RevenueCat)</td><td>Duration of subscription + 3 years for legal and dispute-resolution purposes</td></tr>
-  </table>
-
+  <p>Device-local team data: until you delete the app.<br>
+Cloud team data, leagues, predictions, push token, linked email: until you use "Delete my data and reset" or delete your account.<br>
+Team history and suggestion records (only if you opted in): up to 12 months after they are made; deleted immediately when you opt out, reset your data or delete your account.<br>
+Record of your consent choice (no team data): up to 24 months after you withdraw or delete your account.<br>
+Anonymous session: until you delete your data or your account.<br>
+Feedback: 90 days.<br>
+AI rate-limit logs: 7 days.<br>
+Crash reports and performance traces (Sentry): 90 days.<br>
+Analytics events (PostHog, only if you allowed them): not linked to your account; kept under PostHog's retention settings.<br>
+Advertising measurement data held by Meta: under Meta's own retention.<br>
+Purchase records (RevenueCat): duration of subscription + 3 years.</p>
   <h2>Your rights</h2>
-  <p>Depending on your jurisdiction (including GDPR, KVKK, CCPA), you may have rights to access, correct, export, or delete your data. To exercise these rights, contact: Kayra Tozan · <a href="mailto:tozankayra4@gmail.com">tozankayra4@gmail.com</a>. We will respond within 30 days.</p>
-  <p>You also have the right to lodge a complaint with a supervisory authority. In Turkey: Kişisel Verileri Koruma Kurumu (<a href="https://kvkk.gov.tr">kvkk.gov.tr</a>). In the EU/EEA: your local data protection authority. In the UK: the Information Commissioner's Office (<a href="https://ico.org.uk">ico.org.uk</a>).</p>
-
-  <footer>
-    <p>PitIQ · <a href="terms.html">Terms of Use</a> · <a href="mailto:tozankayra4@gmail.com">Contact</a></p>
-  </footer>
+  <p>Depending on your jurisdiction (including GDPR, KVKK, CCPA), you may have rights to access, correct, export, or delete your data. Settings → "Data &amp; privacy" lets you export your team data and delete your account and data yourself. For anything else, contact: Kayra Tozan · <a href="mailto:tozankayra4@gmail.com">tozankayra4@gmail.com</a>. We will respond within 30 days.</p>
+  <p>You also have the right to lodge a complaint with a supervisory authority. In Turkey: Kişisel Verileri Koruma Kurumu (kvkk.gov.tr). In the EU/EEA: your local data protection authority. In the UK: the Information Commissioner's Office (ico.org.uk).</p>
+  <footer>PitIQ · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/data-deletion.html">Data deletion</a></footer>
 </body>
 </html>

@@ -1,0 +1,12 @@
+# PitIQ
+
+> PitIQ is an independent, unofficial strategy coach for fantasy motorsport on iPhone: rate your team from 0 to 100, get the one swap that matters, and plan your chips. It is not associated with any racing series, team or driver.
+
+## Pages
+- [Fantasy Team Rating](https://pitiqapp.com/fantasy-team-rating/): Rate your fantasy team from 0 to 100 and see why. PitIQ explains the score in plain English and shows the one swap with the best payoff.
+- [Fantasy Transfer Advisor](https://pitiqapp.com/fantasy-transfer-advisor/): Not sure who to swap? PitIQ is a fantasy transfer advisor that shows the one move that matters and, with Pro, a race plan: move or hold.
+- [Fantasy Team Optimizer](https://pitiqapp.com/fantasy-team-optimizer/): Build the best fantasy team for your budget in seconds. Pick a strategy and the PitIQ optimizer checks every valid lineup for you.
+- [Fantasy Chip Strategy](https://pitiqapp.com/fantasy-chip-strategy/): Keep track of your fantasy chips and see how they change the best team. PitIQ factors the chips you have left into its advice.
+- [Fantasy Strategy Guides](https://pitiqapp.com/guides/): Short guides to fantasy team rating, transfers, the team optimizer and chip strategy, written for casual players.
+- [Privacy policy](https://pitiqapp.com/privacy.html)
+- [Terms](https://pitiqapp.com/terms.html)
